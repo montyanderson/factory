@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  vortex:
+    build: .
+    ports:
+      - "127.0.0.1:3000:3000"
+    links:
+      - "redis:redis"
+    command: [ "npx", "nodemon", "server" ]
+    volumes:
+        - ./server:/app/server
+  redis:
+    image: redis:latest
